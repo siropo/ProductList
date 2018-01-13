@@ -1,6 +1,11 @@
 export default function reducer(state = {
     counterIds: 0,
-    products: []
+    products: [{
+        id: 234,
+        name: "Pesho",
+        price: 543543,
+        currency: "USD"
+    }]
 }, action) {
     switch (action.type) {
         case "ADD_PRODUCT":

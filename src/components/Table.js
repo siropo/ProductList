@@ -1,15 +1,24 @@
 import React from 'react'
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
 import { Table, Button } from 'semantic-ui-react'
-import { fetchPermissions } from "../actions/permissions"
-import { deleteProduct } from "../actions/products"
+import { fetchPermissions } from '../actions/permissions'
+import { deleteProduct } from '../actions/products'
+import PropTypes from 'prop-types'
+
+TableProducts.propTypes = {
+    history: PropTypes.array,
+    products: PropTypes.string,
+    dispatch: PropTypes.func,
+    deleteProduct: PropTypes.number,
+    permissions: PropTypes.string
+}
 
 const mapStateToProps = (store) => {
     return {
         products: store.products,
         permissionsFetched: store.permissions.fetched,
         permissions: store.permissions.permissions,
-    };
+    }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -23,20 +32,18 @@ const mapDispatchToProps = dispatch => {
 class TableProducts extends React.Component {
 
     constructor(props) {
-        super(props);
-
-        this.deleteProduct = this.deleteProduct.bind(this);
-        this.editProduct = this.editProduct.bind(this);
-        this.handleProductClick = this.handleProductClick.bind(this);
+        super(props)
+        this.deleteProduct = this.deleteProduct.bind(this)
+        this.editProduct = this.editProduct.bind(this)
+        this.handleProductClick = this.handleProductClick.bind(this)
     }
 
     componentWillMount() {
 
     }
 
-    editProduct(e) {
-        e.preventDefault();
-        this.context.router.push('/edit/1');
+    editProduct() {
+        this.props.history.push('/edit/234')
     }
 
     fetchPermissions() {
@@ -44,32 +51,32 @@ class TableProducts extends React.Component {
     }
 
     deleteProduct(id) {
-        this.props.deleteProduct(id);
+        this.props.deleteProduct(id)
     }
 
     handleProductClick(e) {
-        const type = e.target.getAttribute('data-type');
+        const type = e.target.getAttribute('data-type')
         switch (type) {
             case 'delete':
                 {
-                    const id = e.target.getAttribute('data-id');
-                    this.deleteProduct(id);
-                    break;
+                    const id = e.target.getAttribute('data-id')
+                    this.deleteProduct(id)
+                    break
                 }
             case 'edit':
                 {
-                    const id = e.target.getAttribute('data-id');
-                    this.editProduct(id);
-                    break;
+                    const id = e.target.getAttribute('data-id')
+                    this.editProduct(id)
+                    break
                 }
             default: {
-                return;
+                break;
             }
         }
     }
 
     render() {
-        const { products, permissions } = this.props;
+        const { products, permissions } = this.props
 
         if (!products.products.length) {
             return (

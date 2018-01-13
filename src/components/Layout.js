@@ -1,14 +1,14 @@
 import React from 'react'
 import { Container, Divider } from 'semantic-ui-react'
-import Menu from './Menu';
-import Table from './Table';
-import Form from './Form';
-import Edit from './Edit';
-import Permissions from './Permissions';
-var ReactRouter = require('react-router-dom');
-var Router = ReactRouter.BrowserRouter;
-var Route = ReactRouter.Route;
-var Switch = ReactRouter.Switch;
+import Menu from './Menu'
+import Table from './Table'
+import Form from './Form'
+import Edit from './Edit'
+import Permissions from './Permissions'
+import ReactRouter from 'react-router-dom'
+var Router = ReactRouter.BrowserRouter
+var Route = ReactRouter.Route
+var Switch = ReactRouter.Switch
 
 const ContainerExampleAlignment = () => (
     <React.Fragment>
