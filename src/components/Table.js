@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Table, Button } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 import { fetchPermissions } from '../actions/permissions'
-import { deleteProduct } from '../actions/products'
+import DeleteButton from '../components/DeleteButton'
+import UpdateButton from '../components/UpdateButton'
 import PropTypes from 'prop-types'
 
 const mapStateToProps = (store) => {
@@ -15,9 +16,6 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteProduct: (id) => {
-            dispatch(deleteProduct(id))
-        }
     }
 }
 
@@ -25,47 +23,32 @@ class TableProducts extends React.Component {
 
     constructor(props) {
         super(props)
-        this.deleteProduct = this.deleteProduct.bind(this)
-        this.editProduct = this.editProduct.bind(this)
-        this.handleProductClick = this.handleProductClick.bind(this)
-    }
-
-    componentWillMount() {
-
-    }
-
-    editProduct(id) {
-        this.props.history.push(`/edit/${id}`)
     }
 
     fetchPermissions() {
         this.props.dispatch(fetchPermissions())
     }
 
-    deleteProduct(id) {
-        this.props.deleteProduct(id)
-    }
-
-    handleProductClick(e) {
-        const type = e.target.getAttribute('data-type')
-        switch (type) {
-            case 'delete':
-                {
-                    const id = e.target.getAttribute('data-id')
-                    this.deleteProduct(id)
-                    break
-                }
-            case 'edit':
-                {
-                    const id = e.target.getAttribute('data-id')
-                    this.editProduct(id)
-                    break
-                }
-            default: {
-                break
-            }
-        }
-    }
+    // handleProductClick(e) {
+    //     const type = e.target.getAttribute('data-type')
+    //     switch (type) {
+    //         case 'delete':
+    //             {
+    //                 const id = e.target.getAttribute('data-id')
+    //                 this.deleteProduct(id)
+    //                 break
+    //             }
+    //         case 'edit':
+    //             {
+    //                 const id = e.target.getAttribute('data-id')
+    //                 this.editProduct(id)
+    //                 break
+    //             }
+    //         default: {
+    //             break
+    //         }
+    //     }
+    // }
 
     render() {
         const { products, permissions } = this.props
@@ -85,8 +68,8 @@ class TableProducts extends React.Component {
                     <Table.HeaderCell>{product.price}</Table.HeaderCell>
                     <Table.HeaderCell>{product.currency}</Table.HeaderCell>
                     <Table.HeaderCell textAlign='right'>
-                        <Button data-type='delete' data-id={product.id}>delete</Button>
-                        <Button data-type='edit' data-id={product.id}>edit</Button>
+                        <DeleteButton id={product.id} />
+                        <UpdateButton id={product.id} history={this.props.history} />
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
@@ -110,10 +93,9 @@ class TableProducts extends React.Component {
 }
 
 TableProducts.propTypes = {
+    dispatch: PropTypes.func,
     history: PropTypes.object,
     products: PropTypes.object,
-    dispatch: PropTypes.func,
-    deleteProduct: PropTypes.func,
     permissions: PropTypes.array
 }
 
