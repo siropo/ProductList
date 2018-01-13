@@ -1,7 +1,9 @@
-var React = require('react');
+import React from 'react'
 
 function Permissions() {
-    return null
+    return (
+        null
+    )
 }
 
-module.exports = Permissions;
+export default Permissions

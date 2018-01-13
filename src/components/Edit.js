@@ -1,13 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import { updateProduct } from "../actions/products"
+import React from 'react'
+import { connect } from 'react-redux'
+import { updateProduct } from '../actions/products'
+import Form from '../components/Form'
 
 const mapStateToProps = (store) => {
     return {
         products: store.products,
         permissionsFetched: store.permissions.fetched,
         permissions: store.permissions.permissions,
-    };
+    }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -19,12 +20,17 @@ const mapDispatchToProps = dispatch => {
 }
 
 class EditProduct extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
     render() {
+
         return (
-            <div>
-                hi
-            {console.log(this.props)}
-            </div>
+            <React.Fragment>
+                <h3>Edit product</h3>
+                <Form name={'pesho'} price={222} currency='USD' />
+            </React.Fragment>
         )
     }
 }

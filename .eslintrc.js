@@ -18,6 +18,13 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "CallExpression[callee.object.name='console'][callee.property.name=/^(log|warn|error|info|trace)$/]",
+                "message": "Unexpected property on console object was called"
+            }
+        ],
         "indent": ["warn", 4],
         "linebreak-style": [
             "error",
@@ -31,5 +38,8 @@ module.exports = {
             "error",
             "never"
         ]
+    },
+    "globals": {
+        "require": true
     }
 };

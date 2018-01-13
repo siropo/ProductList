@@ -2,13 +2,13 @@ export default function reducer(state = {
     counterIds: 0,
     products: [{
         id: 234,
-        name: "Pesho",
+        name: 'Pesho',
         price: 543543,
-        currency: "USD"
+        currency: 'USD'
     }]
 }, action) {
     switch (action.type) {
-        case "ADD_PRODUCT":
+        case 'ADD_PRODUCT':
             {
                 return {
                     ...state,
@@ -16,7 +16,7 @@ export default function reducer(state = {
                     products: [...state.products, action.payload],
                 }
             }
-        case "UPDATE_PRODUCT":
+        case 'UPDATE_PRODUCT':
             {
                 const { id, name, price, currency } = action.payload
                 const newProducts = [...state.products]
@@ -28,7 +28,7 @@ export default function reducer(state = {
                     products: newProducts,
                 }
             }
-        case "DELETE_PRODUCT":
+        case 'DELETE_PRODUCT':
             {
                 return {
                     ...state,

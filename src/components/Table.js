@@ -5,14 +5,6 @@ import { fetchPermissions } from '../actions/permissions'
 import { deleteProduct } from '../actions/products'
 import PropTypes from 'prop-types'
 
-TableProducts.propTypes = {
-    history: PropTypes.array,
-    products: PropTypes.string,
-    dispatch: PropTypes.func,
-    deleteProduct: PropTypes.number,
-    permissions: PropTypes.string
-}
-
 const mapStateToProps = (store) => {
     return {
         products: store.products,
@@ -42,8 +34,8 @@ class TableProducts extends React.Component {
 
     }
 
-    editProduct() {
-        this.props.history.push('/edit/234')
+    editProduct(id) {
+        this.props.history.push(`/edit/${id}`)
     }
 
     fetchPermissions() {
@@ -70,7 +62,7 @@ class TableProducts extends React.Component {
                     break
                 }
             default: {
-                break;
+                break
             }
         }
     }
@@ -116,6 +108,15 @@ class TableProducts extends React.Component {
         )
     }
 }
+
+TableProducts.propTypes = {
+    history: PropTypes.object,
+    products: PropTypes.object,
+    dispatch: PropTypes.func,
+    deleteProduct: PropTypes.func,
+    permissions: PropTypes.array
+}
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps

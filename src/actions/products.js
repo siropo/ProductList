@@ -5,16 +5,15 @@ export function addProduct(data) {
     }
 }
 
-export function updateProduct(id, name, price, currency) {
+export function updateProduct(data) {
     return {
         type: 'UPDATE_PRODUCT',
-        payload: {
-            id,
-            name,
-            price,
-            currency
-        },
+        payload: data,
     }
+}
+
+export function getProduct(id) {
+    return { type: 'DELETE_PRODUCT', payload: id }
 }
 
 export function deleteProduct(id) {
