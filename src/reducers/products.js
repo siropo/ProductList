@@ -1,11 +1,8 @@
+import products from '../store/db.json'
+
 export default function reducer(state = {
-    counterIds: 0,
-    products: [{
-        id: 234,
-        name: 'Pesho',
-        price: 543543,
-        currency: 'USD'
-    }]
+    counterIds: products.length + 1,
+    products: products,
 }, action) {
     switch (action.type) {
         case 'ADD_PRODUCT':
@@ -18,10 +15,10 @@ export default function reducer(state = {
             }
         case 'UPDATE_PRODUCT':
             {
-                const { id, name, price, currency } = action.payload
+                const { id } = action.payload
                 const newProducts = [...state.products]
                 const productToUpdate = newProducts.findIndex(product => product.id === id)
-                newProducts[productToUpdate] = action.payload;
+                newProducts[productToUpdate] = action.payload
 
                 return {
                     ...state,
@@ -35,6 +32,8 @@ export default function reducer(state = {
                     products: state.products.filter(product => product.id !== ~~action.payload),
                 }
             }
+        default:
+            break
     }
 
     return state

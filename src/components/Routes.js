@@ -2,45 +2,49 @@ import React from 'react'
 import Menu from './Menu'
 import Table from './Table'
 import Form from './Form'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import messages from '../utils/messages'
+import { getPermissions } from '../utils/heplers'
 
+class AppRoutes extends React.Component {
+    
+    componentWillMount() {
+        this.permissions = getPermissions()
+    }
 
-const permissions = {
-    CREATE: 'CREATE',
-    READ: 'READ'
+    render() {
+        return (
+            <BrowserRouter>
+                <div className="container">
+                    <Menu />
+                    <Switch>
+                        {[
+                            this.permissions.READ && allowREAD,
+                            this.permissions.CREATE && allowCREATE,
+                            this.permissions.UPDATE && allowEDIT,
+                            [<Route key='notFound'
+                                render={function () {
+                                    return <p>{messages.notFound}</p>
+                                }}></Route>]
+                        ]}
+                    </Switch>
+                </div>
+            </BrowserRouter>
+        )
+    }
 }
 
-const AppRoutes = () => (
-    <BrowserRouter>
-        <div className="container">
-            <Menu />
-            <Switch>
-                <Route exact path='/' render={() => {
-                    return permissions.READ ?
-                        <Redirect to="/" />
-                        : <Table />
-                }}></Route>
-                {[
-                    !permissions.CREATE && LoggedOutRoutes,
-                    permissions.CREATE  && LoggedInRoutes]}
-                {/* <Route path='/create' key='create' component={Form}></Route> */}
-                <Route path='/edit/:id' key='edit' component={Form}></Route>
-                <Route path='/permissions' component={Permissions}></Route>
-                <Route
-                    render={function () {
-                        return <p>Not Found</p>
-                    }}></Route>
-            </Switch>
-        </div>
-    </BrowserRouter>
-)
+const allowREAD = [
+    <Route exact path='/' key='read' component={Table} />
+]
 
-const LoggedInRoutes = [
+const allowCREATE = [
     <Route path='/create' key='create' component={Form} />
 ]
 
-const LoggedOutRoutes = [
-    <Redirect key='redirect' to='/' />
+const allowEDIT = [
+    <Route path='/edit/:id' key='edit' component={Form} />
 ]
+
 
 export default AppRoutes

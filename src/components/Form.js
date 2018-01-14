@@ -55,7 +55,7 @@ class FormProducts extends React.Component {
             return
         }
 
-        const id = parseInt(this.props.match.params.id)
+        const id = parseInt(this.props.match.params.id, 10)
         const products = this.props.products
 
         const productIndex = products.findIndex((product) => {

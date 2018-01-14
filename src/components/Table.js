@@ -1,36 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
-import { fetchPermissions } from '../actions/permissions'
-import DeleteButton from '../components/DeleteButton'
-import UpdateButton from '../components/UpdateButton'
+import DeleteButton from './DeleteButton'
+import UpdateButton from './UpdateButton'
 import PropTypes from 'prop-types'
 
 const mapStateToProps = (store) => {
     return {
         products: store.products,
-        permissionsFetched: store.permissions.fetched,
-        permissions: store.permissions.permissions,
     }
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-    }
+    return {}
 }
 
 class TableProducts extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
-    fetchPermissions() {
-        this.props.dispatch(fetchPermissions())
-    }
-
     render() {
-        const { products, permissions } = this.props
+        const { products } = this.props
 
         if (!products.products.length) {
             return (

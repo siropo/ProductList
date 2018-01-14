@@ -9,5 +9,5 @@ import './App.css'
 const app = document.getElementById('root')
 
 ReactDOM.render(<Provider store={store}>
-  <Layout />
+    <Layout />
 </Provider>, app)

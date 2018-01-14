@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Divider } from 'semantic-ui-react'
-import Routes from '../components/Routes'
+import Routes from './Routes'
 
 const ContainerExampleAlignment = () => (
     <React.Fragment>
