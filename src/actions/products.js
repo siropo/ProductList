@@ -12,10 +12,6 @@ export function updateProduct(data) {
     }
 }
 
-export function getProduct(id) {
-    return { type: 'DELETE_PRODUCT', payload: id }
-}
-
 export function deleteProduct(id) {
     return { type: 'DELETE_PRODUCT', payload: id }
 }
