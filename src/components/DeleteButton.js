@@ -39,8 +39,7 @@ class DeleteButton extends React.Component {
 
 DeleteButton.propTypes = {
     id: PropTypes.number,
-    history: PropTypes.object,
-    deleteProduct: PropTypes.func
+    deleteProduct: PropTypes.func.isRequired
 }
 
 export default connect(

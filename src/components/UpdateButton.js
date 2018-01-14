@@ -22,8 +22,8 @@ class UpdateButton extends React.Component {
 }
 
 UpdateButton.propTypes = {
-    id: PropTypes.number,
-    history: PropTypes.object
+    id: PropTypes.number.isRequired,
+    history: PropTypes.object.isRequired
 }
 
 export default UpdateButton

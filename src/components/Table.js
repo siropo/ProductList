@@ -60,10 +60,8 @@ class TableProducts extends React.Component {
 }
 
 TableProducts.propTypes = {
-    dispatch: PropTypes.func,
-    history: PropTypes.object,
-    products: PropTypes.object,
-    permissions: PropTypes.array
+    history: PropTypes.object.isRequired,
+    products: PropTypes.object.isRequired
 }
 
 export default connect(

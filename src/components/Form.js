@@ -173,19 +173,12 @@ class FormProducts extends React.Component {
 }
 
 FormProducts.propTypes = {
-    pageName: PropTypes.string,
-    id: PropTypes.number,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    currency: PropTypes.string,
-    products: PropTypes.array,
-    hideMessage: PropTypes.bool,
-    idCounter: PropTypes.number,
-    addProduct: PropTypes.func,
-    updateProduct: PropTypes.func,
-    history: PropTypes.object,
-    match: PropTypes.object,
-    _ismounted: PropTypes.bool
+    products: PropTypes.array.isRequired,
+    idCounter: PropTypes.number.isRequired,
+    addProduct: PropTypes.func.isRequired,
+    updateProduct: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired
 }
 
 export default connect(
