@@ -7,7 +7,6 @@ const ContainerExampleAlignment = () => (
         <Container textAlign='left'>
             <Routes />
         </Container>
-
         <Container textAlign='justified'>
             <Divider />
         </Container>

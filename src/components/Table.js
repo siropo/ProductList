@@ -29,27 +29,6 @@ class TableProducts extends React.Component {
         this.props.dispatch(fetchPermissions())
     }
 
-    // handleProductClick(e) {
-    //     const type = e.target.getAttribute('data-type')
-    //     switch (type) {
-    //         case 'delete':
-    //             {
-    //                 const id = e.target.getAttribute('data-id')
-    //                 this.deleteProduct(id)
-    //                 break
-    //             }
-    //         case 'edit':
-    //             {
-    //                 const id = e.target.getAttribute('data-id')
-    //                 this.editProduct(id)
-    //                 break
-    //             }
-    //         default: {
-    //             break
-    //         }
-    //     }
-    // }
-
     render() {
         const { products, permissions } = this.props
 
